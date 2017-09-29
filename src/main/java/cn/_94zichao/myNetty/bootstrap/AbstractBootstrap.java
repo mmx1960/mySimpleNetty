@@ -10,7 +10,7 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B,C>,C exten
 
     private ChannelFactory<C> channelFactory;
 
-    public B channel(Class<cn._94zichao.myNetty.channel.NioServerSocketChannel> clazz){
+    public B channel(Class<? extends C> clazz){
         this.channelFactory = new ReflectChannelFactory<C>(clazz);
         return (B)this;
     }
@@ -28,7 +28,9 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B,C>,C exten
     }
 
     public void validate(){
-
+        if(channelFactory == null){
+            throw new IllegalArgumentException("channelFactory should be initialized");
+        }
     }
 
 
