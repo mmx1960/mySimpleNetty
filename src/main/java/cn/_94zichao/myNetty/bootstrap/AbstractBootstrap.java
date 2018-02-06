@@ -4,8 +4,13 @@ import cn._94zichao.myNetty.channel.Channel;
 import cn._94zichao.myNetty.channel.ChannelFactory;
 import cn._94zichao.myNetty.channel.ReflectChannelFactory;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.channels.Selector;
 
+/**
+ * @author Lenovo
+ */
 public abstract class AbstractBootstrap<B extends AbstractBootstrap<B,C>,C extends Channel> {
 
     private ChannelFactory<C> channelFactory;
@@ -23,11 +28,14 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B,C>,C exten
 
     private  void doBind(Integer port){
         Channel channel = channelFactory.newChannel();
+
+        channel.register();
+
         channel.bind(new InetSocketAddress(port));
 
     }
 
-    public void validate(){
+    private void validate(){
 
     }
 

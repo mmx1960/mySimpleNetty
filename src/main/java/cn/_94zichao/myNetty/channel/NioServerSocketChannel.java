@@ -2,14 +2,18 @@ package cn._94zichao.myNetty.channel;
 
 import java.io.IOException;
 import java.net.SocketAddress;
+import java.nio.channels.SelectionKey;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 
+/**
+ * @author Lenovo
+ */
 public class NioServerSocketChannel extends AbstractNioChannel {
 
     public NioServerSocketChannel() {
 
-       super(newSocket());
+       super(newSocket(), SelectionKey.OP_ACCEPT);
     }
 
     private static ServerSocketChannel newSocket(){
@@ -28,6 +32,7 @@ public class NioServerSocketChannel extends AbstractNioChannel {
     @Override
     protected  void doBind(SocketAddress localAddress) throws Exception{
         ch().socket().bind(localAddress);
+
     }
 
 

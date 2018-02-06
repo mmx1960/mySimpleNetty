@@ -8,6 +8,7 @@ public class  ReflectChannelFactory<T extends Channel> implements ChannelFactory
         this.clazz = clazz;
     }
 
+    @Override
     public T newChannel() {
         try {
             return clazz.newInstance();
