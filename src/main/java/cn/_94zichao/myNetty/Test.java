@@ -13,7 +13,7 @@ import java.nio.channels.spi.SelectorProvider;
 import java.util.HashMap;
 import java.util.Set;
 
-public class main {
+public class Test {
     public static void main(String[] args) {
 //        ServerBootstrap sb = new ServerBootstrap();
 //        sb.channel(NioServerSocketChannel.class).bind(9999);

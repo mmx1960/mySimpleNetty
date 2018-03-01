@@ -36,4 +36,14 @@ public class NioServerSocketChannel extends AbstractNioChannel {
     }
 
 
+    @Override
+    public void register(EventLoop eventLoop, final ChannelPromise promise) {
+        eventLoop.execute(new Runnable() {
+            @Override
+            public void run() {
+                register();
+                promise.trySuccess();
+            }
+        });
+    }
 }
